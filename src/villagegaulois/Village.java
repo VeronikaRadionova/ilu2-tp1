@@ -86,12 +86,14 @@ public class Village {
 		
 		Etal[] trouverEtals(String produit) {
 			int nbEtalsProduit = 0;
-			Etal[] etalsProduit = new Etal[nbEtals];
-			
 			for (int i = 0; i < nbEtals; i++) {
 				if (etals[i].contientProduit(produit)) {
-					etalsProduit[nbEtalsProduit] = etals[i];
 					nbEtalsProduit++;
+				}
+			Etal[] etalsProduit = new Etal[nbEtals];
+			for (int j = 0; j < nbEtals; j++) {
+				if (etals[i].contientProduit(produit)) {
+					etalsProduit[nbEtalsProduit] = etals[i];
 				}
 			}
 		}
