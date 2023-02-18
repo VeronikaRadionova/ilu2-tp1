@@ -78,4 +78,12 @@ public class Etal {
 		return this.produit.equals(produit);
 	}
 
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public String getProduit() {
+		return produit;
+	}
+
 }
