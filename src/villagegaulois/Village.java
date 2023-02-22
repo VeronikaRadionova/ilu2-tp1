@@ -8,14 +8,13 @@ public class Village {
 	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
-	private int nbEtals;
 	private Marche marche;
+	private int nbEtals;
 	
 
 	public Village(String nom, int nbVillageoisMaximum, int nbEtals) {
 		this.nom = nom;
 		villageois = new Gaulois[nbVillageoisMaximum];
-		this.nbEtals = nbEtals;
 		marche = new Marche(nbEtals);
 	}
 

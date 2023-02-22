@@ -18,6 +18,8 @@ public class Scenario {
 		Gaulois assurancetourix = new Gaulois("Assurancetourix", 2);
 		Gaulois bonemine = new Gaulois("Bonemine", 7);
 		
+		
+		
 		village.ajouterHabitant(bonemine);
 		village.ajouterHabitant(assurancetourix);
 		village.ajouterHabitant(asterix);
@@ -26,9 +28,8 @@ public class Scenario {
 		village.ajouterHabitant(abraracourcix);
 		village.afficherVillageois();
 
-		System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
-//		System.out
-//				.println(village.installerVendeur(assurancetourix, "lyres", 5));
+//    	System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
+//		System.out.println(village.installerVendeur(assurancetourix, "lyres", 5));
 //		System.out.println(village.installerVendeur(obelix, "menhirs", 2));
 //		System.out.println(village.installerVendeur(druide, "fleurs", 10));
 
