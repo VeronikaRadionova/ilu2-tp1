@@ -16,6 +16,7 @@ public class Village {
 		this.nom = nom;
 		villageois = new Gaulois[nbVillageoisMaximum];
 		this.nbEtals = nbEtals;
+		marche = new Marche(nbEtals);
 	}
 
 	public String getNom() {
@@ -68,20 +69,26 @@ public class Village {
 		StringBuilder chaine = new StringBuilder();
 		chaine.append(vendeur.getNom() + " cherche un endroit pour vendre " + nbProduit + produit + "s.\n");
 		int numeroEtal = marche.trouverEtalLibre();
-		marche.etals[numeroEtal].occuperEtal(vendeur, produit, nbProduit);
+		marche.utiliserEtal(numeroEtal,vendeur,produit,nbProduit);
 		chaine.append("Le vendeur " + vendeur.getNom() + " vend des " + produit + "s à l'étal n°" + numeroEtal);
 		return chaine.toString();
 	}
 	
 	public String rechercherVendeursProduit(String produit) {
-		
+		StringBuilder chaine = new StringBuilder();
+		chaine.append("Les vendeurs qui proposent des fleurs sont :\n");
+		Etal[] etalsProduit = marche.trouverEtals(produit);
+		for (int i = 0; i < etalsProduit.length; i++) {
+			chaine.append("- " + etalsProduit[i].getVendeur().getNom() + "\n");
+		}
+		return chaine.toString();
 	}
 	
-	// public Etal rechercherEtal(Gaulois vendeur) {	
-	//}
+	//public Etal rechercherEtal(Gaulois vendeur) {	??????????????????????????
+	//} 
 	
 	public String partirVendeur(Gaulois vendeur) {
-		
+		return marche.trouverVendeur(vendeur).libererEtal();
 	}
 	
 	
@@ -134,15 +141,20 @@ public class Village {
 			return null;
 		}
 		
+		// ??????? il faut mettre ça dans un village ou laisser ici ???????
+		
 		public String afficherMarche() {
+			StringBuilder chaine = new StringBuilder();
+			chaine.append("Le marché du village " + nom + " possède plusieurs étals :\n");
 			int nbEtalVide = 0;
 			for (int i = 0; i < nbEtals; i++) {
 				if (!etals[i].isEtalOccupe())
-					return etals[i].getVendeur() + " vend " + etals[i].getQuantite() + etals[i].getProduit();
+					chaine.append(etals[i].getVendeur() + " vend " + etals[i].getQuantite() + etals[i].getProduit() + "\n");
 				else
 					nbEtalVide++;
 			}
-			return "Il reste " + nbEtalVide + " étals non utiliés dans le marché.\n";
+			chaine.append("Il reste " + nbEtalVide + " étals non utiliés dans le marché.\n");
+			return chaine.toString();
 		}
 		
 		
