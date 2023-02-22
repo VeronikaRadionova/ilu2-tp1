@@ -60,6 +60,15 @@ public class Village {
 		return chaine.toString();
 	}
 	
+	
+// VILLAGE + MARCHÉ //
+	
+	public String installerVendeur(Gaulois vendeur, String produit,int nbProduit) {
+		
+	}
+	
+	
+	
 // MARCHÉ MARCHÉ MARCHÉ //
 	
 	private static class Marche {
@@ -117,7 +126,6 @@ public class Village {
 			}
 			return "Il reste " + nbEtalVide + " étals non utiliés dans le marché.\n";
 		}
-		
 		
 		
 		}
