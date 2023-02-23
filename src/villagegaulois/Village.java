@@ -69,7 +69,7 @@ public class Village {
 		chaine.append(vendeur.getNom() + " cherche un endroit pour vendre " + nbProduit + produit + "s.\n");
 		int numeroEtal = marche.trouverEtalLibre();
 		marche.utiliserEtal(numeroEtal,vendeur,produit,nbProduit);
-		chaine.append("Le vendeur " + vendeur.getNom() + " vend des " + produit + "s à l'étal n°" + numeroEtal);
+		chaine.append("Le vendeur " + vendeur.getNom() + " vend des " + produit + "s à l'étal n°" + numeroEtal + ".\n");
 		return chaine.toString();
 	}
 	
