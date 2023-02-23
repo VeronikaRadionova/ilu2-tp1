@@ -97,7 +97,7 @@ public class Village {
 	
 	private static class Marche {
 		private Etal[] etals;
-		private int nbEtals;
+		//private int nbEtals;
 		
 		private Marche(int nbEtals) {
 			etals = new Etal[nbEtals];
@@ -111,7 +111,7 @@ public class Village {
 		}
 		
 		public int trouverEtalLibre() {
-			for (int i=0; i < nbEtals; i++) {
+			for (int i=0; i < etals.length; i++) {
 				if (!etals[i].isEtalOccupe())
 					return i;
 			}
@@ -120,12 +120,12 @@ public class Village {
 		
 		public Etal[] trouverEtals(String produit) {
 			int nbEtalsProduit = 0;
-			for (int i = 0; i < nbEtals; i++) {
+			for (int i = 0; i < etals.length; i++) {
 				if (etals[i].contientProduit(produit))
 					nbEtalsProduit++;
 			}
-			Etal[] etalsProduit = new Etal[nbEtals];
-			for (int j = 0; j < nbEtals; j++) {
+			Etal[] etalsProduit = new Etal[etals.length];
+			for (int j = 0; j < etals.length; j++) {
 				if (etals[j].contientProduit(produit))
 					etalsProduit[nbEtalsProduit] = etals[j];
 			}
@@ -133,7 +133,7 @@ public class Village {
 			}
 
 		public Etal trouverVendeur(Gaulois gaulois) {
-			for (int i = 0; i < nbEtals; i++) {
+			for (int i = 0; i < etals.length; i++) {
 				if (etals[i].getVendeur() == gaulois)
 					return etals[i];		
 			}
@@ -146,7 +146,7 @@ public class Village {
 			StringBuilder chaine = new StringBuilder();
 			chaine.append("Le marché du village " + nom + " possède plusieurs étals :\n");
 			int nbEtalVide = 0;
-			for (int i = 0; i < nbEtals; i++) {
+			for (int i = 0; i < etals.length; i++) {
 				if (!etals[i].isEtalOccupe())
 					chaine.append(etals[i].getVendeur() + " vend " + etals[i].getQuantite() + etals[i].getProduit() + "\n");
 				else

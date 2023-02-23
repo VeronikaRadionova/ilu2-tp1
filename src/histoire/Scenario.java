@@ -25,9 +25,9 @@ public class Scenario {
 		village.ajouterHabitant(obelix);
 		village.ajouterHabitant(druide);
 		village.ajouterHabitant(abraracourcix);
-		village.afficherVillageois();
+		System.out.println(village.afficherVillageois());
 
-//    	System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
+    	System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
 //		System.out.println(village.installerVendeur(assurancetourix, "lyres", 5));
 //		System.out.println(village.installerVendeur(obelix, "menhirs", 2));
 //		System.out.println(village.installerVendeur(druide, "fleurs", 10));
