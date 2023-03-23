@@ -66,10 +66,13 @@ public class Village {
 	
 	public String installerVendeur(Gaulois vendeur, String produit,int nbProduit) {
 		StringBuilder chaine = new StringBuilder();
-		chaine.append(vendeur.getNom() + " cherche un endroit pour vendre " + nbProduit + produit + "s.\n");
+		chaine.append(vendeur.getNom() + " cherche un endroit pour vendre " + nbProduit + " "+ produit + ".\n");
 		int numeroEtal = marche.trouverEtalLibre();
-		marche.utiliserEtal(numeroEtal,vendeur,produit,nbProduit);
-		chaine.append("Le vendeur " + vendeur.getNom() + " vend des " + produit + "s à l'étal n°" + numeroEtal + ".\n");
+		if (numeroEtal >= 0) {
+			marche.utiliserEtal(numeroEtal,vendeur,produit,nbProduit);
+			chaine.append("Le vendeur " + vendeur.getNom() + " vend des " + produit + "s à l'étal n°" + numeroEtal + ".\n");
+		}
+		
 		return chaine.toString();
 	}
 	
@@ -83,11 +86,17 @@ public class Village {
 		return chaine.toString();
 	}
 	
-	//public Etal rechercherEtal(Gaulois vendeur) {	??????????????????????????
+	//public Etal rechercherEtal(Gaulois vendeur) {	???
 	//} 
 	
 	public String partirVendeur(Gaulois vendeur) {
 		return marche.trouverVendeur(vendeur).libererEtal();
+	}
+	
+	public String afficherMarche() {
+		StringBuilder chaine = new StringBuilder();
+		chaine.append("Le marché du village " + nom + " possède plusieurs étals :\n");
+		return chaine.append(marche.afficherMarche()).toString();
 	}
 	
 	
@@ -144,7 +153,7 @@ public class Village {
 		
 		public String afficherMarche() {
 			StringBuilder chaine = new StringBuilder();
-			chaine.append("Le marché du village " + nom + " possède plusieurs étals :\n");
+			//chaine.append("Le marché du village " + nom + " possède plusieurs étals :\n");
 			int nbEtalVide = 0;
 			for (int i = 0; i < etals.length; i++) {
 				if (!etals[i].isEtalOccupe())
@@ -152,11 +161,11 @@ public class Village {
 				else
 					nbEtalVide++;
 			}
-			chaine.append("Il reste " + nbEtalVide + " étals non utiliés dans le marché.\n");
+			if (nbEtalVide > 0) {
+				chaine.append("Il reste " + nbEtalVide + " étals non utiliés dans le marché.\n");
+			}
 			return chaine.toString();
 		}
 		
-		
-		}
+	}
 }
-		
